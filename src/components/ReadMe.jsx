@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 
 const ReadMe = () => {
   const grassColors = [
@@ -150,22 +149,39 @@ const ReadMe = () => {
               </ul>
               <div className="exp">
                 <h3 className="subtitle01">Experience</h3>
+                <ul className="expList">
                 <li>
-                  더블유로또 코리아 &nbsp;&nbsp;
-                  <a href="https://www.notion.so/WLOTTO-84a52d287d5542f891f561fb51b7df55" className="detail" target="blank">
+                  <div className="expTitle">
+                   <h4>KTcs &nbsp;&nbsp;</h4>
+                  <a href="https://www.notion.so/22252247bcaa8024ae65c64d6f379952?v=22252247bcaa8079b460000c2aa11f0c&source=copy_link" className="detail" target="blank">
                     자세히 보기
-                  </a>{' '}
+                  </a>
+                  </div>
+                  <div className="expMeta">
+                  <p>동적노드 개발자</p>
+                  <p className="date">2024.06 ~ </p>
+                  </div>
                 </li>
-
-                <p>Frontend Engineer</p>
-                <p className="date">2023.07 ~ </p>
+                  <li>
+                    <div className="expTitle">
+                      <h4> 더블유로또 코리아 &nbsp;&nbsp;</h4>
+                      <a href="https://www.notion.so/WLOTTO-84a52d287d5542f891f561fb51b7df55" className="detail" target="blank">
+                        자세히 보기
+                      </a>
+                    </div>
+                    <div className="expMeta">
+                      <p>Frontend Engineer</p>
+                      <p className="date">2023.07 ~ 2024.06</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
               <div className="edu">
                 <h3 className="subtitle02">Education</h3>
                 <p className="desc">
                   방송통신대학교 컴퓨터과학과
                   <br />
-                  <span>3학년, &nbsp;&nbsp; 2023년 9월 편입, 재학 중</span>
+                  <span>4학년, &nbsp;&nbsp; 재학 중</span>
                 </p>
                 <p className="desc">
                   TIS 정보기술 교육원
