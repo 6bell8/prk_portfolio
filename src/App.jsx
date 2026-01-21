@@ -47,47 +47,76 @@ const App = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // ✅ 휠 한 번에 "한 섹션"만 부드럽게 이동 + 연타 방지(속도 조절)
-    const isScrollingRef = { current: false };
-    const SCROLL_LOCK_MS = 900; // 숫자 키우면 더 느리게 넘어감 (예: 900)
+    // ✅ 환경마다 다른 wheel 이벤트를 "한 번에 한 섹션"으로 통일
+    const state = {
+      locked: false,
+      acc: 0,
+      lockTimer: null,
+    };
 
-    const handleScroll = (event) => {
+    const LOCK_MS = 850; // 숫자 ↑ : 더 안정(덜 튐), 숫자 ↓ : 더 빠릿
+    const THRESHOLD_PX = 120; // 숫자 ↑ : 더 세게 굴려야 넘어감, 숫자 ↓ : 민감
+
+    const normalizeDeltaY = (event, container) => {
+      const { deltaY, deltaMode } = event;
+
+      // deltaMode: 0=pixel, 1=line, 2=page
+      if (deltaMode === 1) return deltaY * 16; // line → px (대략값)
+      if (deltaMode === 2) return deltaY * container.clientHeight; // page → px
+      return deltaY; // pixel
+    };
+
+    const scrollToIndex = (index) => {
+      const container = containerRef.current;
+      if (!container) return;
+      container.scrollTo({
+        top: index * container.clientHeight,
+        behavior: 'smooth',
+      });
+    };
+
+    const handleWheel = (event) => {
+      // Ctrl + wheel (브라우저 확대/축소) 방지로 꼬이는 것 방지
+      if (event.ctrlKey) return;
+
       event.preventDefault();
 
       const container = containerRef.current;
       if (!container) return;
 
-      if (isScrollingRef.current) return;
+      if (state.locked) return;
 
-      const { deltaY } = event;
-      const direction = deltaY > 0 ? 1 : -1;
+      const deltaPx = normalizeDeltaY(event, container);
+      state.acc += deltaPx;
 
-      const { scrollTop, clientHeight } = container;
+      if (Math.abs(state.acc) < THRESHOLD_PX) return;
+
+      const direction = state.acc > 0 ? 1 : -1;
 
       const totalSections = sectionRefs.current.filter(Boolean).length;
       const maxIndex = Math.max(0, totalSections - 1);
 
-      const currentIndex = Math.round(scrollTop / clientHeight);
+      const currentIndex = Math.round(container.scrollTop / container.clientHeight);
       const nextIndex = Math.min(maxIndex, Math.max(0, currentIndex + direction));
 
-      isScrollingRef.current = true;
+      state.acc = 0;
+      state.locked = true;
 
-      container.scrollTo({
-        top: nextIndex * clientHeight,
-        behavior: 'smooth',
-      });
+      scrollToIndex(nextIndex);
 
-      window.setTimeout(() => {
-        isScrollingRef.current = false;
-      }, SCROLL_LOCK_MS);
+      if (state.lockTimer) window.clearTimeout(state.lockTimer);
+      state.lockTimer = window.setTimeout(() => {
+        state.locked = false;
+      }, LOCK_MS);
     };
 
     const container = containerRef.current;
-    container.addEventListener('wheel', handleScroll, { passive: false });
+    container.addEventListener('wheel', handleWheel, { passive: false });
 
     return () => {
-      container.removeEventListener('wheel', handleScroll);
+      container.removeEventListener('wheel', handleWheel);
       window.removeEventListener('resize', handleResize);
+      if (state.lockTimer) window.clearTimeout(state.lockTimer);
     };
   }, []);
 
