@@ -49,7 +49,7 @@ const App = () => {
 
     // ✅ 휠 한 번에 "한 섹션"만 부드럽게 이동 + 연타 방지(속도 조절)
     const isScrollingRef = { current: false };
-    const SCROLL_LOCK_MS = 700; // 숫자 키우면 더 느리게 넘어감 (예: 900)
+    const SCROLL_LOCK_MS = 900; // 숫자 키우면 더 느리게 넘어감 (예: 900)
 
     const handleScroll = (event) => {
       event.preventDefault();
