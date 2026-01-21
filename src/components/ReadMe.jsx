@@ -181,7 +181,7 @@ const ReadMe = () => {
                 <p className="desc">
                   방송통신대학교 컴퓨터과학과
                   <br />
-                  <span>4학년 재학 중 &nbsp;&nbsp; <span className="em">(2026.08 졸업예정)</span> </span>
+                  <span>4학년 재학&nbsp;&nbsp; <span className="em">(2026.08 졸업예정)</span> </span>
                 </p>
                 <p className="desc">
                   TIS 정보기술 교육원
