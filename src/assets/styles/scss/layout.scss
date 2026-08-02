@@ -823,6 +823,21 @@ body {
           padding: 8rem 0px;
           align-items: center;
           backdrop-filter: blur(20px);
+          &.aiccRepository {
+            height: auto;
+            align-items: stretch;
+            .aiccProject {
+              a {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+              }
+              .aiccShareImage {
+                flex: 1;
+                min-height: 0;
+              }
+            }
+          }
           .projectDesc {
             margin: 0 8rem;
             width: 60rem;
@@ -952,7 +967,7 @@ body {
             .aiccShareImage {
               display: block;
               width: 100%;
-              aspect-ratio: 1 / 1;
+              aspect-ratio: auto;
               object-fit: cover;
             }
             .projectTitle {

@@ -147,7 +147,7 @@ const Repositories = () => {
       <div className="contents">
         <div className="repositoriesBox">
           <Swiper modules={[Navigation, Pagination]} navigation pagination={{ clickable: true }} slidesPerView={1}>
-            <SwiperSlide className="repository">
+            <SwiperSlide className="repository aiccRepository">
               <li className="projectDesc">
                 <p className="repoTitle">Repositories</p>
                 <div className="projectNameRow">
