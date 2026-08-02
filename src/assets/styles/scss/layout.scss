@@ -842,6 +842,36 @@ body {
               color: $main-color;
               margin-bottom: 30px;
             }
+            .projectNameRow {
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 12px;
+              margin-bottom: 30px;
+              .projectName {
+                margin-bottom: 0;
+              }
+              .liveBadge {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                padding: 7px 11px;
+                border: 1px solid rgba(64, 196, 99, 0.35);
+                border-radius: 999px;
+                background: rgba(64, 196, 99, 0.1);
+                color: #16863a;
+                font-size: 12px;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                span {
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background: #40c463;
+                  box-shadow: 0 0 0 4px rgba(64, 196, 99, 0.15);
+                }
+              }
+            }
             .descBox {
               margin-bottom: 30px;
               .descTitle {
@@ -919,6 +949,12 @@ body {
               width: 100%;
               background-repeat: no-repeat;
             }
+            .aiccShareImage {
+              display: block;
+              width: 100%;
+              aspect-ratio: 1 / 1;
+              object-fit: cover;
+            }
             .projectTitle {
               padding: 40px 15px;
               background-color: #fff;
@@ -941,6 +977,10 @@ body {
                 font-weight: 300;
                 line-height: 1.5;
                 color: #7b7b7b;
+                strong {
+                  color: #16863a;
+                  font-weight: 900;
+                }
               }
             }
           }

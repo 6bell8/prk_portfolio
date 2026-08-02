@@ -13,6 +13,7 @@ import img_banner5 from '../assets/images/img_banner5.jpg';
 import img_banner6 from '../assets/images/img_banner6.jpg';
 import img_banner7 from '../assets/images/img_banner7.jpg';
 import img_banner8 from '../assets/images/img_banner8.jpg';
+import aiccShareImage from '../assets/images/aicc-share-image.png';
 
 const Repositories = () => {
   const [init, setInit] = useState(false);
@@ -146,6 +147,44 @@ const Repositories = () => {
       <div className="contents">
         <div className="repositoriesBox">
           <Swiper modules={[Navigation, Pagination]} navigation pagination={{ clickable: true }} slidesPerView={1}>
+            <SwiperSlide className="repository">
+              <li className="projectDesc">
+                <p className="repoTitle">Repositories</p>
+                <div className="projectNameRow">
+                  <p className="projectName">AICC Management Console</p>
+                  <span className="liveBadge"><span aria-hidden="true"></span>STG · 테스트 환경</span>
+                </div>
+                <div className="descBox">
+                  <p className="descTitle">Desc</p>
+                  <p className="repoDesc">
+                    사내망에서 실제 업무에 사용 중인 AICC 통합 관리 콘솔입니다. 기존 내부 업무 흐름을 분석하고 불편한 프로세스를 개선해 현업에 적용했으며, 현재 공개된 STG 환경은 사내망 밖에서도 테스트할 수 있도록 기능과 운영 범위를 지속적으로 확장하고 있습니다.
+                  </p>
+                </div>
+                <div className="skillBox">
+                  <p className="skillTitle">Skill used in project</p>
+                  <div className="frontend">
+                    <p className="frontSkillTitle">Frontend</p>
+                    <p className="repoDesc">Next.js, React</p>
+                  </div>
+                  <div className="backend">
+                    <p className="backSkillTitle">Backend · Database</p>
+                    <p className="repoDesc">MySQL, Railway API</p>
+                  </div>
+                </div>
+              </li>
+              <li className="project aiccProject">
+                <a href="https://aicc-management-console.vercel.app/login?next=%2F" target="_blank" rel="noopener noreferrer">
+                  <img className="aiccShareImage" src={aiccShareImage} alt="AICC works" />
+                  <div className="projectTitle">
+                    <div className="pTitle">
+                      <p>AICC Console</p>
+                      <p><span className="material-symbols-outlined">link</span></p>
+                    </div>
+                    <p className="psub"><strong>사내망 실사용</strong> · 내부 프로세스를 개선해 적용했으며, 외부 STG 테스트 환경으로 확장 중입니다.</p>
+                  </div>
+                </a>
+              </li>
+            </SwiperSlide>
             <SwiperSlide className="repository">
               <li className="projectDesc">
                 <p className="repoTitle">Repositories</p>
